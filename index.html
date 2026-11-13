@@ -352,7 +352,7 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:#8D97AD;font-size:1
 <p class="rot">I draft <b id="rot">rear-end collision demands in Washington</b></p>
 <p class="heroLead">Attorney-ready demand packages, medical analysis, liability research and damages presentation for U.S. personal injury practices — with experience across California, Washington, Oregon, Idaho, Texas, Georgia, Alaska and Utah.</p>
 <div class="buttons"><a class="btn" href="#contact" data-trial>Try 2 cases free</a><a class="btn ghost" href="#book">Book a call</a><a class="btn ghost" href="#portfolio">View writing samples</a><a class="btn ghost" href="#pricing">View pricing</a></div>
-<div class="stats"><div><b><span data-count="900">900</span>+</b><span>demand packages</span></div><div><b>60–<span data-count="100">100</span>+</b><span>packages a month</span></div><div><b>$25K–$<span data-count="10">10</span>M</b><span>policy limits handled</span></div></div>
+<div class="stats"><div><b><span data-count="1000">1,000</span>+</b><span>demand packages</span></div><div><b>60–<span data-count="100">100</span>+</b><span>packages a month</span></div><div><b>$25K–$<span data-count="10">10</span>M</b><span>policy limits handled</span></div></div>
 <p class="turn"><b style="color:var(--gold2)">New firms: your first 2 cases are free.</b> Typical turnaround of <b>12–16 hours</b> per demand. On bulk orders, <b>6–10 demands a day</b>. Rates open to negotiation.</p>
 </div>
 <div class="scene" id="scene">
@@ -824,7 +824,7 @@ var rot=document.getElementById("rot"),phr=["rear-end collision demands in Washi
 if(!REDUCE)setInterval(function(){ri=(ri+1)%phr.length;rot.textContent=phr[ri];rot.classList.remove("sw");void rot.offsetWidth;rot.classList.add("sw")},2600);
 /* count-up */
 document.querySelectorAll("[data-count]").forEach(function(el){var n=+el.dataset.count;if(REDUCE)return;el.textContent="0";var st=null;
- setTimeout(function(){requestAnimationFrame(function f(ts){st=st||ts;var k=Math.min((ts-st)/1800,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})},500)});
+ setTimeout(function(){requestAnimationFrame(function f(ts){st=st||ts;var k=Math.min((ts-st)/1800,1);el.textContent=Math.round(n*(1-Math.pow(1-k,3))).toLocaleString("en-US");if(k<1)requestAnimationFrame(f)})},500)});
 /* 3D entrance */
 var rv=document.querySelectorAll(".rv");
 if(REDUCE||!("IntersectionObserver" in window)){rv.forEach(function(e){e.classList.add("in")})}
