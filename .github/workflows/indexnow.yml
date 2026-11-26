@@ -1,0 +1,18 @@
+name: Ping search engines (IndexNow)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for GitHub Pages to publish
+        run: sleep 90
+      - name: Submit every sitemap URL to IndexNow
+        run: |
+          URLS=$(grep -oE '<loc>[^<]+' sitemap.xml | sed 's/<loc>//' | python3 -c 'import sys,json;print(json.dumps([l.strip() for l in sys.stdin if l.strip()]))')
+          BODY=$(printf '{"host":"draftingbyamitabh.com","key":"a4dea45a3b77de24dfaf5c25afa1b6f4","keyLocation":"https://draftingbyamitabh.com/a4dea45a3b77de24dfaf5c25afa1b6f4.txt","urlList":%s}' "$URLS")
+          echo "$BODY"
+          curl -sS -o /dev/null -w "IndexNow HTTP %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" -H "Content-Type: application/json; charset=utf-8" --data "$BODY"
